@@ -1,3 +1,4 @@
+local tile = require 'tile'
 local message = require 'message'
 local solver = require 'solver'
 local collisionmanager = require 'collisionmanager'
@@ -7,7 +8,7 @@ vector = require'vector'
 PowerupF = require'powerup'
 powerup, superJump, map, compass, dash, bestthing = PowerupF[1], PowerupF[2], PowerupF[3], PowerupF[4], PowerupF[5], PowerupF[6]
 powerupHolder = require'powerupholder'
-
+testtile = tile:new(constants.WIDTH/2, constants.HEIGHT/2, 50, 50, 5, {255, 0, 0, 255})
 -- a generator has powerups and active functions
 local generator = {activeFunctions = {},
              powerups = {},
@@ -16,10 +17,14 @@ local generator = {activeFunctions = {},
                          'Hey, another thing. You can jump on walls. Thats probably an important thing to know.',
                          'Oh, also, things may be unreasonably difficult to get the Thing. I maaaaay also have blocked off some areas. If I did, just close and reopen and I\'ll probably have fixed it. By rebuilding the whole thing. Go big or go home, y\'know?',
                          'Aaaand just one more tiny thing: This is an alpha. Beware the strange and unexpected.'},
-             bestHolder = powerupHolder:new(bestthing:new(vector:new(constants.WIDTH/2, constants.HEIGHT/2)))}
+             bestHolder = powerupHolder:new(bestthing:new(vector:new(constants.WIDTH/2, constants.HEIGHT/2))),
+             tile = testtile}
 
 -- changes the random seed to the given value
 function generator:Init(seed)
+  self.tile:setColumn(3, 0, 10, {0, 0, 255})
+  self.tile:setRow(2, 0, 10, {0, 255, 0})
+  self.tile:setBox(5, 8, 8, {255, 255, 0})
   math.randomseed(seed)
 end
 
@@ -129,6 +134,10 @@ function generator:GenerateWorld(numberRooms)
   -- adjust rooms so all their positions are positive
   negX, negY = getGreatestNegatives()
   adjustRooms(negX, negY)
+  
+  for i,room in ipairs(rooms) do
+    room.tile = self.tile
+  end
   -- return the location of the starting room and the list of rooms
   return rooms, -negX, -negY
 end

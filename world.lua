@@ -1,3 +1,5 @@
+local tile = require 'tile'
+local backgroundgen = require 'backgroundgen'
 local event = require 'event'
 local Socket = require'socket'
 local Player = require'player'
@@ -31,11 +33,11 @@ function World:load()
   bigFont = love.graphics.newFont(50)
   smallFont = love.graphics.newFont(12)
   Player:load()
-  
   self.player = Player:new(Vector:new(constants.WIDTH/2, constants.HEIGHT/2), {1, 2, 1, 8})
   --[[ONLY IMPORTANT THING ABOUT THE WORLD FOR THE GAME AI ASSIGNMENT:
       change os.time() to change the seed]]
   Generator:Init(os.time())
+  self.background = backgroundgen:makeStars()
   generatedLevel, offsetX, offsetY = Generator:GenerateWorld(20)
   self.level = Level:new(generatedLevel, Vector:new(offsetX, offsetY))
   Generator:makePlatforms(self.level.rooms, offsetX, offsetY)
@@ -104,6 +106,7 @@ function World:update(dt)
 end
 
 function World:draw()
+  love.graphics.draw(self.background)
   self.level:draw()
   self.player:draw()
   self.level:drawMap()

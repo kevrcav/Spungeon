@@ -20,6 +20,8 @@ end
 
 function message:draw()
   local currentcolor={love.graphics.getColor()}
+  love.graphics.setColor(125, 125, 125)
+  love.graphics.rectangle('fill', self.center.x, self.center.y - 20, self.maxwidth+20, 100)
   love.graphics.setColor(self.color.r, self.color.g, self.color.b)
   love.graphics.printf(self.words, self.center.x, self.center.y, self.maxwidth, 'center')
   love.graphics.setColor(currentcolor[1], currentcolor[2], currentcolor[3], currentcolor[4])
