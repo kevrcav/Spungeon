@@ -1,3 +1,4 @@
+local drawmanager = require 'drawmanager'
 local pObject = require'pObject'
 local Vector = require'vector'
 local Hitbox = require'hitbox'
@@ -27,11 +28,16 @@ function Player:new(x, coVars)
   eventmanager:registerListener("UpdateEvent", listener:new(o, o.update))
   eventmanager:registerListener("KeyPressedEvent", listener:new(o, o.keyPressed))
   eventmanager:registerListener("KeyReleasedEvent", listener:new(o, o.keyReleased))
+  self:registerDraw()
   return o
 end
 
 function Player:load()
 end  
+
+function Player:registerDraw()
+  drawmanager:registerplayerdrawable(10, self)
+end
 
 function Player:draw()
   if self.body.a.x < 0 then 

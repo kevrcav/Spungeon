@@ -82,10 +82,6 @@ function Platform:moveTo(body, move)
 end
 
 function Platform:draw()
-  if self.tile then
-    self:drawTiles()
-    return
-  end
   love.graphics.setColor(255, 255, 255)
   love.graphics.rectangle('line', self.colBody.loc.x - self.colBody.size.x/2,
                                   self.colBody.loc.y - self.colBody.size.y/2,
@@ -96,22 +92,6 @@ function Platform:draw()
                                   self.colBody.loc.y - self.colBody.size.y/2,
                                   self.colBody.size.x, 
                                   self.colBody.size.y)
-end
-
-function Platform:drawTiles()
-  love.graphics.setColor(255, 255, 255)
-  for i=0,self.tilesize.x do
-    for j=0, self.tilesize.y do
-      love.graphics.draw(self.tile.surface, self.colBody.loc.x - self.colBody.size.x/2+i*self.tilewidth, 
-                                            self.colBody.loc.y - self.colBody.size.y/2+j*self.tileheight)
-    end
-  end
-end
-
-function Platform:setTile(tile)
-  self.tile = tile
-  self.tilewidth, self.tileheight = self.tile.surface:getDimensions()
-  self.tilesize = vector:new(math.floor(self.colBody.size.x/self.tilewidth)-1, math.floor(self.colBody.size.y/self.tileheight-1))
 end
 
 --[[

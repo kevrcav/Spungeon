@@ -38,9 +38,6 @@ function Room:setPlatform(loc, size, color, platType)
   elseif platType=="solid" then
     local newPlat = Platform:new(loc, size, color[1], color[2], color[3])
     table.insert(self.platforms, newPlat)
-    if self.tile and size.x >= 50 and size.y >= 50 then
-      newPlat:setTile(self.tile)
-    end
   end
 end
 

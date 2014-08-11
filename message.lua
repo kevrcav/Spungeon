@@ -1,3 +1,4 @@
+local drawmanager = require 'drawmanager'
 local eventmanager = require 'eventmanager'
 local listener = require 'listener'
 local vector = require 'vector'
@@ -10,8 +11,8 @@ function message:new(words, center, maxwidth, color)
   return o
 end
 
-function message:addDrawListener()
-  eventmanager:addListener('DrawEvent', listener:new(self, self.draw))
+function message:registerDraw()
+  drawmanager:registerdrawable(2, self)
 end
 
 function message:removeDrawListener()
@@ -20,7 +21,7 @@ end
 
 function message:draw()
   local currentcolor={love.graphics.getColor()}
-  love.graphics.setColor(125, 125, 125)
+  love.graphics.setColor(125, 125, 125, 200)
   love.graphics.rectangle('fill', self.center.x, self.center.y - 20, self.maxwidth+20, 100)
   love.graphics.setColor(self.color.r, self.color.g, self.color.b)
   love.graphics.printf(self.words, self.center.x, self.center.y, self.maxwidth, 'center')

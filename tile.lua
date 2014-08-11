@@ -1,3 +1,4 @@
+local drawmanager = require 'drawmanager'
 local vector = require 'vector'
 local tile = {loc = vector:vect0(), size = vector:vect0()}
 
@@ -39,6 +40,10 @@ function tile:setBox(tl, tr, bl, color)
       self:setPixel(i, j, color)
     end
   end
+end
+
+function tile:registerDraw(layer)
+  drawmanager:registerdrawable(layer, self)
 end
 
 function tile:draw()

@@ -13,9 +13,6 @@ end
 
 function drawmanager:setdefaultbackground(background)
   self.dbackground = background
-  for i,room in ipairs(self.layers) do
-    room[0] = {background}
-  end
 end
 
 function drawmanager:registerplayerdrawable(layer, player)
@@ -28,6 +25,19 @@ end
 
 function drawmanager:draw()
   self.dbackground:draw()
+  for i, layer in ipairs(self.layers[self.activeroom]) do
+    for j,drawable in ipairs(layer) do
+      drawable:draw()
+    end
+  end
+  self.player.model:draw()
+  if self.layers[self.activeroom].foreground then
+    for i,layer in ipairs(self.layers[self.activeroom].foreground) do
+      for j,drawable in ipairs(layer) do
+        drawable:draw()
+      end
+    end
+  end
 end
 
 return drawmanager
