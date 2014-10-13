@@ -1,5 +1,7 @@
+-- Custom 2D vector
 local Vector = {x = 0, y = 0}
 
+-- Create a new vector
 function Vector:new(newx, newy)
   o = {x = newx, y = newy}
   setmetatable(o, self)
@@ -9,6 +11,7 @@ end
 
 function Vector:vect0() return Vector:new(0, 0) end
 
+-- a whole bunch of function for basic arithmetic, both static and dynamic
 function Vector:addm(vector)
   self.x = self.x + vector.x
   self.y = self.y + vector.y
@@ -55,14 +58,17 @@ function Vector:div(vector1, vector2)
                     vector1.y / vector2.y)
 end
 
+-- returns the magnitude of the vector
 function Vector:size()
   return math.sqrt(math.pow(self.x, 2) + math.pow(self.y, 2))
 end
 
+-- returns the dot product of this and the given vector
 function Vector:dot(vector)
   return self.x*vector.x + self.y*vector.y
 end
 
+-- returns the distance in 2D space between the two vectors
 function Vector:distance(vector)
   return math.sqrt(math.pow(self.x-vector.x, 2)
                  + math.pow(self.y-vector.y, 2))
@@ -79,19 +85,23 @@ function Vector:determineDir(vect, dir)
   end
 end
 
+-- set this vector's values to the given vector's values
 function Vector:set(vector)
   self.x = vector.x
   self.y = vector.y
 end
 
+-- define equality to be equal x and equal y
 Vector.__eq = function (a, b) 
   return a.x == b.x and a.y == b.y 
 end
 
+-- a cleaner tostring
 Vector.__tostring = function(v)
   return v.x..","..v.y
 end
 
+-- redefine the built-in arithmetic functions
 Vector.__add = function(v1, v2)
   return Vector:add(v1, v2)
 end

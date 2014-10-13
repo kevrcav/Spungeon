@@ -1,9 +1,9 @@
-local collisionmanager = require 'collisionmanager'
-local event = require 'event'
-local eventmanager = require 'eventmanager'
+local collisionmanager = require 'engine/collisionmanager'
+local event = require 'engine/event'
+local eventmanager = require 'engine/eventmanager'
 constants = require'constants'
-Hitbox = require'hitbox'[1]
-Vector = require'vector'
+Hitbox = require'engine/hitbox'
+Vector = require'engine/vector'
 
 -- a powerup has a body, a name, and knows if it's grabbed
 local powerup = {body = Hitbox:new(Vector:vect0(), Vector:vect0()), isGrabbed = false, name = ""}

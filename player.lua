@@ -1,11 +1,11 @@
 local drawmanager = require 'drawmanager'
-local pObject = require'pObject'
-local Vector = require'vector'
-local Hitbox = require'hitbox'
+local pObject = require'engine/physicsobject'
+local Vector = require'engine/vector'
+local Hitbox = require'engine/hitbox'
 local constants = require'constants'
-local eventmanager = require'eventmanager'
-local listener = require'listener'
-local event = require'event'
+local eventmanager = require'engine/eventmanager'
+local listener = require'engine/listener'
+local event = require'engine/event'
 vect0=Vector.vect0
 
 local Player = {

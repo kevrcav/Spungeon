@@ -1,10 +1,10 @@
 local tile = require 'tile'
 local message = require 'message'
 local solver = require 'solver'
-local collisionmanager = require 'collisionmanager'
+local collisionmanager = require 'engine/collisionmanager'
 Room = require'room'
 constants = require'constants'
-vector = require'vector'
+vector = require'engine/vector'
 PowerupF = require'powerup'
 powerup, superJump, map, compass, dash, bestthing = PowerupF[1], PowerupF[2], PowerupF[3], PowerupF[4], PowerupF[5], PowerupF[6]
 powerupHolder = require'powerupholder'

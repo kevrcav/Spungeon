@@ -1,7 +1,7 @@
 local drawmanager = require 'drawmanager'
-local eventmanager = require 'eventmanager'
-local listener = require 'listener'
-local vector = require 'vector'
+local eventmanager = require 'engine/eventmanager'
+local listener = require 'engine/listener'
+local vector = require 'engine/vector'
 local message = {words = '', center = vector:vect0(), maxwidth = 0, color={r=0, g=0, b=0}}
 
 function message:new(words, center, maxwidth, color)

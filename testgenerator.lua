@@ -1,6 +1,6 @@
 local Room = require'room'
 local constants = require'constants'
-local Vector = require'vector'
+local Vector = require'engine/vector'
 
 local testgenerator = {}
 

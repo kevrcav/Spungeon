@@ -1,9 +1,9 @@
-local listener = require 'listener'
-local eventmanager = require 'eventmanager'
-local collisionmanager = require 'collisionmanager'
+local listener = require 'engine/listener'
+local eventmanager = require 'engine/eventmanager'
+local collisionmanager = require 'engine/collisionmanager'
 local Room = require'room'
 local constants = require'constants'
-local Vector = require'vector'
+local Vector = require'engine/vector'
 
 local Level = { rooms = {}, -- a table of table of rooms 
 currentRoom = Room:new(0, 0) -- the active room

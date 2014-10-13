@@ -1,5 +1,5 @@
 World = require'world'
-Controller = require'controller'
+Controller = require'engine/controller'
 
 function love:load()
   World:load()

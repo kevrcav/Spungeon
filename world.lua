@@ -1,16 +1,16 @@
 local tile = require 'tile'
 local backgroundgen = require 'backgroundgen'
-local event = require 'event'
+local event = require 'engine/event'
 local Socket = require'socket'
 local Player = require'player'
-local Vector = require'vector'
+local Vector = require'engine/vector'
 local Level = require'level'
 local constants = require'constants'
 local Adjuster = require'varadjuster'
 local Generator = require'generator'
 local TestGenerator = require'testgenerator'
-local listener = require'listener'
-local eventmanager = require'eventmanager'
+local listener = require'engine/listener'
+local eventmanager = require'engine/eventmanager'
 
 local World = {
   entities = {},

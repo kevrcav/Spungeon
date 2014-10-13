@@ -1,5 +1,5 @@
 local drawmanager = require 'drawmanager'
-local vector = require 'vector'
+local vector = require 'engine/vector'
 local tile = {loc = vector:vect0(), size = vector:vect0()}
 
 function tile:new(x, y, width, height, pixelSize, color)

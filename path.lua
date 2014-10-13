@@ -1,5 +1,5 @@
 local constants = require 'constants'
-local vector = require 'vector'
+local vector = require 'engine/vector'
 local maxHeight = constants.HEIGHT/50
 local maxWidth = constants.WIDTH/50
 

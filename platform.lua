@@ -1,10 +1,8 @@
-local event = require 'event'
-local eventmanager = require 'eventmanager'
+local event = require 'engine/event'
+local eventmanager = require 'engine/eventmanager'
 local powerup = require 'powerup'
-local Vector = require'vector'
-local HitboxFile = require'hitbox'
-local Hitbox = HitboxFile[1]
-local NoBottom = HitboxFile[2]
+local Vector = require'engine/vector'
+local Hitbox = require'engine/hitbox'
 
 local Platform = {
   colBody =  Hitbox:new(Vector.vect0(), Vector.vect0()), 
@@ -94,52 +92,4 @@ function Platform:draw()
                                   self.colBody.size.y)
 end
 
---[[
-local DoublePlatform = {platform1, platform2, isDouble = true}
-
-function DoublePlatform:new(plat1, plat2)
-  
-  o = {platform1 = plat1, platform2 = plat2}
-  setmetatable(o, self)
-  self.__index = self
-  return o
-end
-
-function DoublePlatform:registerListener()
-  self.platform1.colBody:registerListener()
-  self.platform2.colBody:registerListener()
-end
-
-function DoublePlatform:hitboxCallback(event)
-  if self.platform1:collide(event.body) then
-    self.platform1:hitboxCallback(event)
-  else
-    self.platform2:hitboxCallback(event)
-  end
-end
-
-function DoublePlatform:collide(body)
-  return self.platform1:collide(body)
-      or self.platform2:collide(body)
-end
-
-function DoublePlatform:moveTo(body, move)
-  firstHit = self.platform1:moveTo(body, move)
-  secondHit = self.platform2:moveTo(body, move)
-  return math.max(firstHit, secondHit)
-end
-
-function DoublePlatform:draw()
-  self.platform1:draw()
-  self.platform2:draw()
-end
-
-function Platform.__tostring(p)
-  return "Platform at "..tostring(p.colBody.loc).." of size "..tostring(p.colBody.size)
-end
-
-function DoublePlatform.__tostring(dp)
-  return tostring(dp.platform1).." "..tostring(dp.platform2)
-end
-]]
-return {Platform, DoublePlatform}
+return Platform

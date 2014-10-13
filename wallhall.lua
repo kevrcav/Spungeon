@@ -1,7 +1,7 @@
 local constants = require 'constants'
 local maxHeight = constants.HEIGHT/50
 local maxWidth = constants.WIDTH/50
-local vector = require 'vector'
+local vector = require 'engine/vector'
 local wallhall = {start = vector:vect0(), size = 0, type = '', previous = false, next = {}, is = 'wallhall'}
 
 function wallhall:new(x, y, size, type)

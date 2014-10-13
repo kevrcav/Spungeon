@@ -1,5 +1,5 @@
 local listfunctions = require 'listfunctions'
-local sortedlist = require 'sortedlist'
+local sortedlist = require 'engine/sortedlist'
 local constants = require 'constants'
 local pathanalyzer = {}
 local maxHeight = constants.HEIGHT/50

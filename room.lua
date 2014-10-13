@@ -1,12 +1,10 @@
 local constants = require 'constants'
 local message = require 'message'
-local listener = require 'listener'
-local eventmanager = require 'eventmanager'
-local collisionmanager = require 'collisionmanager'
-PlatFile = require'platform'
-Platform = PlatFile[1]
-DPlat = PlatFile[2]
-Vector = require'vector'
+local listener = require 'engine/listener'
+local eventmanager = require 'engine/eventmanager'
+local collisionmanager = require 'engine/collisionmanager'
+Platform = require'platform'
+Vector = require'engine/vector'
 constants = require'constants'
 vect0 = Vector.vect0
 

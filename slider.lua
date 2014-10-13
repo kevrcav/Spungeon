@@ -1,5 +1,5 @@
-local HitBox = require'hitbox'[1]
-local Vector  = require'vector'
+local HitBox = require'engine/hitbox'
+local Vector  = require'engine/vector'
 
 local Slider = {x = 0, y = 0, button = HitBox:new(Vector:vect0(), Vector:vect0()), val = 0.5, size = 100, isGrabbed = false}
 
